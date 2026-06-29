@@ -56,7 +56,7 @@ h1, h2, h3 {
 	border-top: 7px solid black;
 	border-radius: 10px;
 	vertical-align: bottom;
-	z-index: 2;
+	z-index: 100;
 }
 
 #main_line:hover {
@@ -67,46 +67,68 @@ h1, h2, h3 {
 	border-color: red;
 }
 
+
+/* line fill */
 .line_fill {
 	position: absolute;
 	bottom: 15%;
 	left: 10.5%;
-
 	height: 150px;
-	background-color: rgba(255, 0, 0, 0.3);
-	width: 12%;
 
-	background: linear-gradient(
+	background-image: linear-gradient(
         to right,
         rgba(137, 180, 250, 0.1),
         rgba(137, 180, 250, 0.4) 50%,
         rgba(137, 180, 250, 0.1)
     );
     
-    /* Jemný border */
-    border-left: 2px solid rgba(137, 180, 250, 0.3);
-    border-right: 2px solid rgba(137, 180, 250, 0.3);
-    
-    border-radius: 4px;
-    backdrop-filter: blur(2px);
     transition: background-color 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
+
+
+
+
 
 .line_fill:hover {
 	background-color: rgba(137, 180, 250, 0.2);
+	z-index: 3;
 }
 
 
+.event_cont:hover .vertical-line {
+	z-index: 5;
+}
+
+
+.line_fill .event_input {
+	width: 70%;
+	font-size: 20px;
+	border: 2px solid #89b4fa;
+	padding: 5px 10px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	pointer-events: none;
+	transition: background-color 0.3s ease-in-out;
+}
+
+
+
+
+/* timestampy */
 .main_timestamp {
 	position: absolute;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-end;
-
 	height: fit-content;
 	bottom: 5%;
-	left: 1.5%;
+	transform: translateX(-50%)
 }
 
 .time_stamp {
@@ -119,8 +141,6 @@ h1, h2, h3 {
 	position: relative;
 	display: flex;
 	height: 20px;
-	
 	border-radius: 10px;
 	border-color: black;
-
 }
