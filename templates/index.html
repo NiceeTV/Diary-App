@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Denník</title>
+    <link rel="stylesheet" type="text/css" href="./main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/froala-editor@latest/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    
+    
+    <div id="sidebar">
+        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
+        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
+        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
+        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
+        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
+        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
+        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
+    </div>
+
+    <div id="diary_entry_container">
+        <div id="entry_title">
+            <h1> Deň 123. - 5/6/2026</h2>
+            <button id="audio_btn">A</button>
+            <input type="file" id="fileInput" style="display: none;">
+        </div>
+
+        <div class="double_col">
+            <div id="entry_week_stats">
+                <div class="week_title">
+                    <span class="week_text">Week stats</span>
+                    <button id="stats_plus">+</button>
+                </div>
+                <div class="week_entries">
+                    <div class="week_stats_entry">
+                        <img src="icons/bed_icon.png">
+                        7:30
+                    </div>
+                    <div class="week_stats_entry">
+                        <img src="icons/bed_icon.png">
+                        22:00
+                    </div>
+                    <div class="week_stats_entry">
+                        <img src="icons/bed_icon.png">
+                        4:25
+                    </div>
+                </div>
+            </div>
+            <div id="entry_mood">
+                <span class="week_text">Mood (1-5)</span>
+                <div class="moods">
+                    <div class="mood_col">
+                        <div class="mood_desc">
+                            <span>Ráno</span>
+                            <span>Večer</span>
+                        </div>
+
+                        <div class="mood_inputs">
+                            <input type="text" name="rano_score" value="5" >
+                            <input type="text" name="vecer_score" value="5">
+                        </div>
+                    </div>
+                    <div class="mood_col">
+                        <div class="mood_desc">
+                            <span>Spánok</span>
+                            <span>Energia</span>
+                        </div>
+
+                        <div class="mood_inputs">
+                            <input type="text" name="spanok_score" value="5" >
+                            <input type="text" name="energia_score" value="5">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="entry_curr_stats">
+            <span class="week_text">Today</span>
+            <div class="week_entries">
+                <div class="week_stats_entry">
+                    <img src="icons/bed_icon.png">
+                    7:30
+                </div>
+                <div class="week_stats_entry">
+                    <img src="icons/bed_icon.png">
+                    22:00
+                </div>
+                <div class="week_stats_entry">
+                    <img src="icons/bed_icon.png">
+                    4:25
+                </div>
+            </div>
+        </div>
+
+        <div id="entry_goal_reason_cont">
+            <div id="entry_goal">
+                <span style="font-weight: bold;">Cieľ:</span> 
+                <span id="goal">spraviť denník appku</span>
+            </div>
+
+            <label class="check-label">
+                <input class="stvorec-check" type="checkbox" value="1">
+                <span class="checkmark"></span>
+            </label>
+
+            <select id="reason_select">
+                <option>Nedalo sa</option>
+                <option>Nebol čas</option>
+                <option value="other">Iné</option>
+            </select>
+
+            <input id="entry_goal_reason" placeholder="Dôvod"></input>
+        </div>
+
+        <div id="entry_timeline">
+            <span class="week_text">Timeline</span>
+            <div id="timeline">
+                
+            </div>
+        </div>
+
+        <div id="froala-editor"> </div>
+
+        <textarea id="entry_reflection" placeholder="Reflexia"></textarea>
+        <div style="min-height: 20px"></div>
+    </div>
+  
+        
+    <script type="text/javascript" src="./main.js"></script>
+</body>
+</html>

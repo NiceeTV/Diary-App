@@ -1,0 +1,126 @@
+html {
+	box-sizing: border-box;
+	overflow-x: hidden;
+	height: 100%;
+	margin: 0;
+	font-family: Inter;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	margin: 0;
+	box-sizing: border-box;
+	overflow-y: hidden;
+}
+
+h1, h2, h3 {
+	margin: 0;
+}
+
+/* timeline */
+#entry_timeline {
+	width: calc(100% - 10px);
+	box-sizing: border-box;
+	height: 300px;
+	min-height: 300px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+#timeline {
+	height: 100%;
+	position: relative;
+}
+
+.vertical-line, .time_line {
+	position: absolute;
+	bottom: 15%;
+	border-left: 4px solid #89b4fa;  /* Farba a hrúbka */
+    height: 150px;                   /* Dĺžka čiary */
+    width: 0;                        /* Žiadna šírka */
+    display: inline-block;
+    z-index: 1;
+}
+
+
+#main_line {
+	display: inline-block;
+	width: 95%;
+	position: absolute;
+	left: 2.5%;
+	bottom: 15%;
+	border-top: 7px solid black;
+	border-radius: 10px;
+	vertical-align: bottom;
+	z-index: 2;
+}
+
+#main_line:hover {
+	border-color: #cccccc;
+}
+
+.vertical-line:hover {
+	border-color: red;
+}
+
+.line_fill {
+	position: absolute;
+	bottom: 15%;
+	left: 10.5%;
+
+	height: 150px;
+	background-color: rgba(255, 0, 0, 0.3);
+	width: 12%;
+
+	background: linear-gradient(
+        to right,
+        rgba(137, 180, 250, 0.1),
+        rgba(137, 180, 250, 0.4) 50%,
+        rgba(137, 180, 250, 0.1)
+    );
+    
+    /* Jemný border */
+    border-left: 2px solid rgba(137, 180, 250, 0.3);
+    border-right: 2px solid rgba(137, 180, 250, 0.3);
+    
+    border-radius: 4px;
+    backdrop-filter: blur(2px);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.line_fill:hover {
+	background-color: rgba(137, 180, 250, 0.2);
+}
+
+
+.main_timestamp {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+
+	height: fit-content;
+	bottom: 5%;
+	left: 1.5%;
+}
+
+.time_stamp {
+	display: flex;
+	margin-top: 5px;
+	box-sizing: border-box;
+}
+
+.time_line {
+	position: relative;
+	display: flex;
+	height: 20px;
+	
+	border-radius: 10px;
+	border-color: black;
+
+}

@@ -1,0 +1,300 @@
+html {
+	box-sizing: border-box;
+	overflow-x: hidden;
+	height: 100%;
+	margin: 0;
+	font-family: Inter;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	margin: 0;
+	box-sizing: border-box;
+	overflow-y: hidden;
+}
+
+h1, h2, h3 {
+	margin: 0;
+}
+
+
+#sidebar {
+	height: 100%;
+	width: 20%;
+	box-sizing: border-box;
+	padding: 10px 0 0 0;
+	background-color: #f0f2f5;
+	display: flex;
+	flex-direction: column;
+	row-gap: 5px;
+	align-items: center;
+}
+
+
+.sidebar_item {
+	height: 40px;
+	width: 95%;
+	display: flex;
+	text-align: left;
+	align-items: center;
+	vertical-align: text-bottom;
+	padding: 0px 14px;
+	margin-right: 4px;
+	box-sizing: border-box;
+	font-size: 24px;
+	outline: 1px solid #94a6b8;
+	background-color: #e0e6eb;
+	border-radius: 5px;
+}
+
+.sidebar_item:hover {
+	background-color: #c2ccd6;
+}
+
+
+#diary_entry_container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	height: 100%;
+	
+	padding-left: 15px;
+	padding-top: 15px;
+	flex: 1;
+	overflow-y: auto;
+	padding-bottom: 100px;
+}
+
+
+/* entry */
+#entry_title {
+	display: flex;
+	gap: 20px;
+	align-items: center;
+}
+
+#entry_title h1 {
+	margin: 0;
+}
+
+#audio_btn, #stats_plus {
+	width: 35px;
+	height: 35px;
+	font-size: 20px;
+}
+
+.double_col {
+	display: flex;
+	justify-content: flex-start;
+	gap: 20px;
+	width: 100%;
+	height: fit-content;
+}
+
+#entry_week_stats, #entry_curr_stats, #entry_mood {
+	height: 100%;
+	border: 1px solid black;
+	width: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+	padding: 15px;
+	box-sizing: border-box;
+}
+
+#entry_curr_stats {
+	height: fit-content;
+}
+
+.week_title {
+	display: flex;
+	align-items: center;
+	gap: 15px;
+}
+
+.week_text {
+	font-size: 30px;
+	font-weight: bolder;
+	text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.week_entries {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	gap: 50px;
+	height: 100%;
+	padding: 0 10px 10px 10px;
+}
+
+/* week stats */
+.week_stats_entry {
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	padding: 12px;
+	font-size: 25px;
+}
+
+.week_stats_entry:hover {
+	box-sizing: border-box;
+	border-radius: 10px;
+	background-color: #f0f2f5;
+}
+
+.week_stats_entry img {
+	width: 48px;
+}
+
+/* mood stats */
+.moods {
+	display: flex;
+	gap: 50px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.mood_col {
+	display: flex;
+	gap: 15px;
+	row-gap: 5px;
+	align-items: center;
+	width: 100%;
+}
+
+/* mood col subcols */
+.mood_desc, .mood_inputs, .mood_stars {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 100%;
+	gap: 7px;
+}
+
+.mood_inputs input {
+	width: 35px;
+	height: 35px;
+	display: flex;
+	text-align: center;
+	box-sizing: border-box;
+	padding-top: 2px;
+	background-color: lightgreen;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+
+.mood_entry {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+}
+
+
+/* custom checkbox */
+/* Skrytie pôvodného checkboxu */
+.stvorec-check {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Vlastný štvorcový checkbox */
+.check-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.checkmark {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #c2ccd6;
+    border-radius: 0;
+    background-color: white;
+    position: relative;
+    transition: all 0.2s;
+}
+
+/* Zaškrtnutý stav */
+.stvorec-check:checked + .checkmark {
+    background-color: #28a745;
+    border-color: #218838;
+}
+
+/* Fajka vnútri */
+.stvorec-check:checked + .checkmark::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Hover efekt */
+.check-label:hover .checkmark {
+    border-color: #218838;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+}
+
+.check-label:focus .checkmark {
+    border-color: #218838;
+    box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+}
+
+/* reason select */
+#reason_select, #entry_goal_reason, #entry_reflection {
+	display: flex;
+	justify-content: center;
+	box-sizing: border-box;
+	height: 35px;
+	padding: 5px;
+}
+
+#reason_select, #entry_goal_reason {
+	display: none;
+}
+
+/* entry goal */
+#entry_goal_reason_cont {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+
+/* timeline */
+#entry_timeline {
+	width: calc(100% - 10px);
+	box-sizing: border-box;
+	height: 300px;
+	min-height: 300px;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+
+
+
+#froala-editor {
+	width: calc(100% - 10px);
+	height: 500px;
+}
+
+/* reflexia */
+#entry_reflection {
+	min-height: 80px;
+	width: calc(100% - 10px);
+}
