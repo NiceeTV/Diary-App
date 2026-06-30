@@ -1,9 +1,30 @@
+html {
+	box-sizing: border-box;
+	overflow-x: hidden;
+	height: 100%;
+	margin: 0;
+	font-family: Inter;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	margin: 0;
+	box-sizing: border-box;
+	overflow-y: hidden;
+}
+
+h1, h2, h3 {
+	margin: 0;
+}
+
 /* timeline */
 #entry_timeline {
 	width: calc(100% - 10px);
 	box-sizing: border-box;
-	height: 200px;
-	min-height: 200px;
+	height: 300px;
+	min-height: 300px;
 	border: 1px solid black;
 	display: flex;
 	flex-direction: column;
@@ -194,8 +215,6 @@
     color: #1a1b2f;
     outline: 2px solid #313244;
 }
-
-
 
 #clear_timeline {
 	background: #ff3333;

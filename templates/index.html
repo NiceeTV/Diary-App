@@ -3,6 +3,7 @@
 <head>
     <title>Denník</title>
     <link rel="stylesheet" type="text/css" href="./main.css">
+	<link rel="stylesheet" type="text/css" href="./timeline/timeline.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -10,9 +11,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
-    
-    
+<body>    
     <div id="sidebar">
         <div class="sidebar_item">Deň 123. - 25/5/2026</div>
         <div class="sidebar_item">Deň 123. - 25/5/2026</div>
@@ -23,115 +22,136 @@
         <div class="sidebar_item">Deň 123. - 25/5/2026</div>
     </div>
 
+
     <div id="diary_entry_container">
         <div id="entry_title">
-            <h1> Deň 123. - 5/6/2026</h2>
-            <button id="audio_btn">A</button>
-            <input type="file" id="fileInput" style="display: none;">
+            <div class="title_section">
+                <input type="text" id="entry_title_text" value="Deň 123. - 5/6/2026">
+                <button id="audio_btn">A</button>
+                <input type="file" accept=".mp3,.wav,.m4a,.aac,.ogg,.flac,.3gp,audio/*" id="fileInput" style="display: none;" >                
+            </div>
+            
+            <button id="submit_entry">Submit</button>
         </div>
 
-        <div class="double_col">
-            <div id="entry_week_stats">
-                <div class="week_title">
-                    <span class="week_text">Week stats</span>
-                    <button id="stats_plus">+</button>
+        <div id="entry_container">
+            <div class="double_col">
+                <div id="entry_week_stats">
+                    <div class="week_title">
+                        <span class="week_text">Week stats</span>
+                        <button id="stats_plus">+</button>
+                    </div>
+                    <div class="week_entries">
+                        <div class="week_stats_entry" data-value="wakeup">
+                            <img src="icons/bed_icon.png">
+                            <input class="stats_input" type="text" value="7:30">
+                        </div>
+                        <div class="week_stats_entry" data-value="sleep_time">
+                            <img src="icons/bed_icon.png">
+                            <input class="stats_input" type="text" value="22:00">
+                        </div>
+                        <div class="week_stats_entry" data-value="screen_time">
+                            <img src="icons/bed_icon.png">
+                            <input class="stats_input" type="text" value="4:25">
+                        </div>
+                    </div>
                 </div>
-                <div class="week_entries">
-                    <div class="week_stats_entry">
+                <div id="entry_mood">
+                    <span class="week_text">Mood (1-5)</span>
+                    <div class="moods">
+                        <div class="mood_col">
+                            <div class="mood_desc">
+                                <span>Ráno</span>
+                                <span>Večer</span>
+                            </div>
+
+                            <div class="mood_inputs">
+                                <input type="text" name="rano_score" value="3" >
+                                <input type="text" name="vecer_score" value="5">
+                            </div>
+                        </div>
+                        <div class="mood_col">
+                            <div class="mood_desc">
+                                <span>Spánok</span>
+                                <span>Energia</span>
+                            </div>
+
+                            <div class="mood_inputs">
+                                <input type="text" name="spanok_score" value="5" >
+                                <input type="text" name="energia_score" value="5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="entry_curr_stats">
+                <span class="week_text">Today</span>
+                <div class="week_entries" id="today_stats">
+                    <div class="week_stats_entry" data-value="wakeup">
                         <img src="icons/bed_icon.png">
-                        7:30
+                        <input class="stats_input" type="text" value="7:30">
                     </div>
-                    <div class="week_stats_entry">
+                    <div class="week_stats_entry" data-value="sleep_time">
+                        <img src="icons/bed_icon.png" >
+                        <input class="stats_input" type="text" value="22:00">
+                    </div>
+                    <div class="week_stats_entry" data-value="screen_time">
                         <img src="icons/bed_icon.png">
-                        22:00
-                    </div>
-                    <div class="week_stats_entry">
-                        <img src="icons/bed_icon.png">
-                        4:25
+                        <input class="stats_input" type="text" value="4:25">
                     </div>
                 </div>
             </div>
-            <div id="entry_mood">
-                <span class="week_text">Mood (1-5)</span>
-                <div class="moods">
-                    <div class="mood_col">
-                        <div class="mood_desc">
-                            <span>Ráno</span>
-                            <span>Večer</span>
-                        </div>
 
-                        <div class="mood_inputs">
-                            <input type="text" name="rano_score" value="5" >
-                            <input type="text" name="vecer_score" value="5">
-                        </div>
-                    </div>
-                    <div class="mood_col">
-                        <div class="mood_desc">
-                            <span>Spánok</span>
-                            <span>Energia</span>
-                        </div>
+            <div id="entry_goal_reason_cont">
+                <div id="entry_goal">
+                    <span style="font-size: 24px;font-weight: bold;">Cieľ:</span> 
+                    <span>
+                        <input type="text" id="goal" name="goal" value="spraviť denník appku">
+                    </span>
+                </div>
 
-                        <div class="mood_inputs">
-                            <input type="text" name="spanok_score" value="5" >
-                            <input type="text" name="energia_score" value="5">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="entry_curr_stats">
-            <span class="week_text">Today</span>
-            <div class="week_entries">
-                <div class="week_stats_entry">
-                    <img src="icons/bed_icon.png">
-                    7:30
-                </div>
-                <div class="week_stats_entry">
-                    <img src="icons/bed_icon.png">
-                    22:00
-                </div>
-                <div class="week_stats_entry">
-                    <img src="icons/bed_icon.png">
-                    4:25
-                </div>
-            </div>
-        </div>
+                <label class="check-label">
+                    <input class="stvorec-check" type="checkbox" value="1">
+                    <span class="checkmark"></span>
+                </label>
 
-        <div id="entry_goal_reason_cont">
-            <div id="entry_goal">
-                <span style="font-weight: bold;">Cieľ:</span> 
-                <span id="goal">spraviť denník appku</span>
+                <select id="reason_select">
+                    <option>Nedalo sa</option>
+                    <option>Nebol čas</option>
+                    <option value="other">Iné</option>
+                </select>
+
+                <input id="entry_goal_reason" placeholder="Dôvod"></input>
             </div>
 
-            <label class="check-label">
-                <input class="stvorec-check" type="checkbox" value="1">
-                <span class="checkmark"></span>
-            </label>
-
-            <select id="reason_select">
-                <option>Nedalo sa</option>
-                <option>Nebol čas</option>
-                <option value="other">Iné</option>
-            </select>
-
-            <input id="entry_goal_reason" placeholder="Dôvod"></input>
-        </div>
-
-        <div id="entry_timeline">
-            <span class="week_text">Timeline</span>
-            <div id="timeline">
+            <div id="entry_timeline">
+                <div class="timeline_tools">
+                    <span class="timeline_text">Timeline</span>
+                    <button id="clear_timeline"><span class="icon">🗑️</span> Clear timeline</button>
+                    <button id="delete_events"><span class="icon">✖</span> Delete selected</button>
+                </div>
                 
+                <div id="timeline">
+                    <div id="main_line"></div>
+                    <div class="main_timestamp" style="left: 2.5%;">
+                        <div class="time_stamp">0:00</div>
+                    </div>
+
+                    <div class="main_timestamp" style="right: 0%;">
+                        <div class="time_stamp">24:00</div>
+                    </div>
+                </div>
             </div>
+
+            <div id="froala-editor"> </div>
+
+            <textarea id="entry_reflection" placeholder="Reflexia"></textarea>
+            <div class="space"></div>
         </div>
-
-        <div id="froala-editor"> </div>
-
-        <textarea id="entry_reflection" placeholder="Reflexia"></textarea>
-        <div style="min-height: 20px"></div>
     </div>
   
-        
     <script type="text/javascript" src="./main.js"></script>
+	<script type="text/javascript" src="./timeline/timeline.js"></script>
 </body>
 </html>

@@ -54,29 +54,68 @@ h1, h2, h3 {
 }
 
 
-#diary_entry_container {
+#entry_container, #diary_entry_container {
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
 	height: 100%;
-	
-	padding-left: 15px;
-	padding-top: 15px;
 	flex: 1;
-	overflow-y: auto;
 	padding-bottom: 100px;
 }
 
+#diary_entry_container {
+	gap: 0px;
+	overflow-y: auto;
+}
+
+#entry_container {
+	padding-left: 15px;
+}
 
 /* entry */
 #entry_title {
 	display: flex;
+	justify-content: space-between;
 	gap: 20px;
 	align-items: center;
+	position: sticky;
+	padding: 10px 20px;
+    top: 0px;
+    background-color: rgba(255,255,255, 0.8);
+    z-index: 100;
+}
+
+.title_section {
+	display: flex;
+	gap: 20px;
 }
 
 #entry_title h1 {
 	margin: 0;
+}
+
+#entry_title_text {
+	font-size: 32px;
+	font-weight: bold;
+	font-family: Inter;
+	background-color: transparent;
+	border: none;
+	field-sizing: content;
+}
+
+#submit_entry {
+	background-color: #22c55e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#submit_entry:hover {
+	background-color: #16a34a;
 }
 
 #audio_btn, #stats_plus {
@@ -96,10 +135,13 @@ h1, h2, h3 {
 #entry_week_stats, #entry_curr_stats, #entry_mood {
 	height: 100%;
 	border: 1px solid black;
-	width: fit-content;
+	width: 50%;
+	max-width: 50%;
+	min-width: 50%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-between;
 	gap: 15px;
 	padding: 15px;
 	box-sizing: border-box;
@@ -107,6 +149,12 @@ h1, h2, h3 {
 
 #entry_curr_stats {
 	height: fit-content;
+	width: 50%;
+}
+
+#entry_mood {
+	width: fit-content !important;
+	min-width: 0;
 }
 
 .week_title {
@@ -126,21 +174,23 @@ h1, h2, h3 {
 	align-items: center;
 	justify-content: space-around;
 	gap: 50px;
-	height: 100%;
+	height: fit-content;
 	padding: 0 10px 10px 10px;
 }
 
 /* week stats */
 .week_stats_entry {
 	display: flex;
-	gap: 5px;
+	gap: 8px;
 	align-items: center;
 	padding: 12px;
 	font-size: 25px;
+	box-sizing: border-box;
+	min-width: 154px;
+	justify-content: center;
 }
 
 .week_stats_entry:hover {
-	box-sizing: border-box;
 	border-radius: 10px;
 	background-color: #f0f2f5;
 }
@@ -175,9 +225,10 @@ h1, h2, h3 {
 }
 
 .mood_inputs input {
-	width: 35px;
-	height: 35px;
+	width: 40px;
+	height: 40px;
 	display: flex;
+	font-size: 22px;
 	text-align: center;
 	box-sizing: border-box;
 	padding-top: 2px;
@@ -273,20 +324,19 @@ h1, h2, h3 {
 	gap: 10px;
 }
 
-
-/* timeline */
-#entry_timeline {
-	width: calc(100% - 10px);
-	box-sizing: border-box;
-	height: 300px;
-	min-height: 300px;
-	border: 1px solid black;
+#entry_goal {
 	display: flex;
-	flex-direction: column;
-	padding: 10px;
+	align-items: center;
+	gap: 10px;
 }
 
-
+#goal {
+	background-color: transparent;
+	font-size: 24px;
+	border: none;
+	max-width: 337px;
+	field-sizing: content;
+}
 
 #froala-editor {
 	width: calc(100% - 10px);
@@ -295,6 +345,24 @@ h1, h2, h3 {
 
 /* reflexia */
 #entry_reflection {
-	min-height: 80px;
+	min-height: 150px;
 	width: calc(100% - 10px);
+	padding-bottom: 50px;
+}
+
+
+/* stats inputy */
+.stats_input {
+	font-size: 28px;
+	field-sizing: content;
+	text-align: left;
+	background-color: transparent;
+	border: none;
+	height: 100%;
+}
+
+.space {
+	min-height: 100px; flex: 1;
+    width: 100%;
+    flex-shrink: 0;
 }
