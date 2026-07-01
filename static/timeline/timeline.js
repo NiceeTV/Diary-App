@@ -233,6 +233,34 @@ function add_from_event(event) {
 }
 
 
+function calculateCategoryTime(events) {
+    const categoryTime = {};
+    
+    if (!events || events.length === 0) {
+        return categoryTime;
+    }
+    
+    events.forEach(event => {
+        const category = event.category || 'other';
+        const duration = event.duration || 0;
+        
+        if (duration > 0) {
+            if (!categoryTime[category]) {
+                categoryTime[category] = 0;
+            }
+            categoryTime[category] += duration;
+        }
+    });
+    
+    // Zaokrúhli na celé minúty (ak treba)
+    Object.keys(categoryTime).forEach(cat => {
+        categoryTime[cat] = Math.round(categoryTime[cat]);
+    });
+    
+    return categoryTime;
+}
+
+
 main_line.addEventListener("mousedown", e => {
     /* debounce */
     if (isProcessing) return;
@@ -271,6 +299,14 @@ main_line.addEventListener("mousedown", e => {
         tmp_event["end_perc"] = perc;
         tmp_event["end_time"] = `${res["hours"]}:${res["minutes"]}`;
         tmp_event["activity"] = "";
+        tmp_event["category"] = "other"; /* placeholder */
+
+        /* duration pre štatistiky */
+        const perc_diff = Math.abs(tmp_event["end_perc"] - tmp_event["start_perc"]);
+        const sec = 86400 / 100 * perc_diff;
+        const min = sec / 60;
+        tmp_event["duration"] = min;
+
 
         events.push(tmp_event);
         console.log('events',events);
