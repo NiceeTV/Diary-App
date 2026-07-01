@@ -261,6 +261,21 @@ function calculateCategoryTime(events) {
 }
 
 
+function clear_timeline() {
+    /* dva kroky: vymaž HTML a potom events pole */
+    new_event = false;
+    const event_conts = timeline.querySelectorAll(".event_cont");
+
+    /* vymaž všetky event HTML */
+    event_conts.forEach( e => {
+        e.remove();
+    })
+
+    /* vymaž eventy */
+    events = [];
+}
+
+
 main_line.addEventListener("mousedown", e => {
     /* debounce */
     if (isProcessing) return;
@@ -381,19 +396,7 @@ main_line.addEventListener('mousemove', function(e) {
 
 
 /* tools */
-clear_btn.addEventListener("click", () => {
-    /* dva kroky: vymaž HTML a potom events pole */
-    new_event = false;
-    const event_conts = timeline.querySelectorAll(".event_cont");
-
-    /* vymaž všetky event HTML */
-    event_conts.forEach( e => {
-        e.remove();
-    })
-
-    /* vymaž eventy */
-    events = [];
-})
+clear_btn.addEventListener("click", () => {clear_timeline();})
 
 
 del_btn.addEventListener("pointerdown", e => {

@@ -13,20 +13,7 @@
 </head>
 <body>    
     <div id="sidebar">
-        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
-        <div class="sidebar_item">
-            <span class="sidebar_text" title="Deň 123. - 5/6/2026 - Toto je veľmi dlhý názov ktorý sa nezmestí" readonly>Deň 123. - 25/5/2026aa</span>
-            <div class="sidebar_icon">✅</div>
-        </div>
-
-        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
-        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
-        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
-        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
-        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
-        <div class="sidebar_item">Deň 123. - 25/5/2026</div>
     </div>
-
 
     <form id="diary_entry_container" action="/entry_save" method="post">
         <div id="entry_title">
@@ -36,7 +23,10 @@
                 <input type="file" accept=".mp3,.wav,.m4a,.aac,.ogg,.flac,.3gp,audio/*" id="fileInput" style="display: none;" >                
             </div>
             
-            <button type="submit" id="submit_entry">Submit</button>
+            <div>
+                <button type="button" id="delete_entry">Delete</button>
+                <button type="submit" id="submit_entry">Submit</button>
+            </div>
         </div>
 
         <div id="entry_container">

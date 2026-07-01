@@ -202,12 +202,12 @@ def save_entry():
                 data.get('title', 'Bez názvu'),
                 data.get('date', datetime.now().strftime('%Y-%m-%d')),
                 
-                # Stats - jednotlivé hodnoty
+                #stats
                 today_stats.get('wakeup_time'),
                 today_stats.get('sleep_time'),
                 parse_time_to_minutes(today_stats.get('screen_time')),
                 
-                # Mood - jednotlivé hodnoty
+                #moods
                 int(mood.get('rano_score', 0)) if mood.get('rano_score') else None,
                 int(mood.get('vecer_score', 0)) if mood.get('vecer_score') else None,
                 int(mood.get('spanok_score', 0)) if mood.get('spanok_score') else None,
@@ -315,6 +315,38 @@ def get_entry_by_id(entry_id):
         return jsonify({'error': str(e)}), 500
 
 
+@app.route('/entry_delete/<int:entry_id>', methods=['GET'])
+def del_entry_by_id(entry_id):
+    try:
+        conn = get_db()
+        cursor = conn.cursor()
+        
+        #zistíme či vôbec existuje
+        cursor.execute('SELECT id FROM diary_entries WHERE id = ?', (entry_id,))
+        entry = cursor.fetchone()
+        
+        if not entry:
+            conn.close()
+            return jsonify({
+                'success': False,
+                'message': f'Záznam s ID {entry_id} neexistuje'
+            }), 404 #not found
+        
+        #vymažeme ak existuje
+        cursor.execute('DELETE FROM diary_entries WHERE id = ?', (entry_id,))
+        conn.commit()
+        conn.close()
+        
+        return jsonify({
+            'success': True,
+            'message': f'Záznam s ID {entry_id} bol úspešne vymazaný'
+        }), 200
+        
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'message': f'Chyba: {str(e)}'
+        }), 500
 
 
 

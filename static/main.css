@@ -23,6 +23,7 @@ h1, h2, h3 {
 #sidebar {
 	height: 100%;
 	width: 19%;
+	min-width: 250px;
 	box-sizing: border-box;
 	padding: 10px 0 0 0;
 	background-color: #f0f2f5;
@@ -33,14 +34,13 @@ h1, h2, h3 {
 }
 
 
-.sidebar_item {
+.sidebar_item, #sidebar_add {
 	height: 40px;
 	width: 95%;
 	display: flex;
 	text-align: left;
 	text-wrap: nowrap;
 	align-items: center;
-	vertical-align: text-bottom;
 	padding: 0px 7px 0 14px;
 	margin-right: 4px;
 	justify-content: space-between;
@@ -49,17 +49,22 @@ h1, h2, h3 {
 	outline: 1px solid #94a6b8;
 	background-color: #e0e6eb;
 	border-radius: 5px;
+	user-select: none;
 }
 
-.sidebar_item:hover {
+.sidebar_item:hover, #sidebar_add:hover {
 	background-color: #c2ccd6;
+}
+
+.sidebar_item.active, #sidebar_add.active {
+	background-color: #b1c1cd;    
 }
 
 .sidebar_text {
 	max-width: 250px;
-	min-width: 250px;
-	overflow: hidden;       
-    white-space: nowrap;    
+	overflow: hidden;
+    white-space: nowrap;   
+    text-overflow: clip; 
     font-size: 24px;
     font-family: Inter;
     background-color: transparent;
@@ -70,8 +75,14 @@ h1, h2, h3 {
 .sidebar_icon {
 	height: 32px;
 	padding-bottom: 2px;
+	box-shadow: -8px 0 12px -7px rgba(0, 0, 0, 0.15);
 }
 
+#sidebar_add {
+	text-align: center;
+	justify-content: center;
+	background-color: #eff3f5;
+}
 
 #entry_container, #diary_entry_container {
 	display: flex;
@@ -122,7 +133,7 @@ h1, h2, h3 {
 	field-sizing: content;
 }
 
-#submit_entry {
+#submit_entry, #delete_entry {
 	background-color: #22c55e;
     color: white;
     border: none;
@@ -135,6 +146,14 @@ h1, h2, h3 {
 
 #submit_entry:hover {
 	background-color: #16a34a;
+}
+
+#delete_entry {
+	background-color: #ef4444;
+}
+
+#delete_entry:hover {
+	background-color: #d31212;
 }
 
 #audio_btn, #stats_plus {
@@ -360,6 +379,10 @@ h1, h2, h3 {
 #froala-editor {
 	width: calc(100% - 10px);
 	height: 500px;
+}
+
+.fr-element.fr-view {
+	min-height: 300px !important;
 }
 
 /* reflexia */
